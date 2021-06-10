@@ -4,7 +4,7 @@ import { Client } from '../types/discord';
 import config from '../../config/config';
 
 import log from '../utils/log';
-import oChat from '../utils/oChat';
+import oChat from '../modules/oChat';
 
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
