@@ -9,8 +9,8 @@ const deleteMessage = (message: Discord.Message, notification: string) => {
 const oChat = (client: Client, message: Discord.Message) => {
     if (message.content !== `o`) deleteMessage(message, `You may only send an \`o\` in the \`o-chat\`.`);
 
-    message.channel.messages.fetch({ limit: 1 }).then((msgs) => {
-        const msg = msgs.first();
+    message.channel.messages.fetch({ limit: 2 }).then((msgs) => {
+        const msg = msgs.last();
 
         if (msg.author.id === message.author.id) deleteMessage(message, `You cannot send a message after you already have!`);
     });
