@@ -1,0 +1,20 @@
+{
+  "name": "lw-warship",
+  "version": "1.0.0",
+  "description": "LightWarp Warship.",
+  "main": "build/src/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LightwarpNetwork/LightwarpWarship.git"
+  },
+  "author": "DamienVesper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LightwarpNetwork/LightwarpWarship/issues"
+  },
+  "homepage": "https://github.com/LightwarpNetwork/LightwarpWarship#readme"
+}
