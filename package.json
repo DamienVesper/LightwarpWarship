@@ -4,7 +4,10 @@
   "description": "LightWarp Warship.",
   "main": "build/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "node ./build/src/index.js",
+    "dist": "yarn build && yarn dev",
+    "dev:lint": "eslint . --fix --ext .ts"
   },
   "repository": {
     "type": "git",
