@@ -7,6 +7,11 @@ import log from '../utils/log';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
+    if (message.channel.id === `490575752467709961` && message.content !== `o`) {
+        message.author.send(`Please only send messages that conform with the channel theme!`).catch(() => log(`blue`, `Failed to send warning message to ${message.author.tag}`));
+        message.delete();
+    }
+
     // Botception and prefix handling.
     if (message.author.bot || message.channel.type === `dm`) return;
     if (message.content.slice(0, config.prefix.length).toString().toLowerCase() !== config.prefix) return;
