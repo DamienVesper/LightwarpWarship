@@ -12,7 +12,7 @@ const oChat = (client: Client, message: Discord.Message) => {
     message.channel.messages.fetch({ limit: 2 }).then((msgs) => {
         const msg = msgs.last();
 
-        if (msg.author.id === message.author.id) deleteMessage(message, `You cannot send a message after you already have!`);
+        if (msg.author.id === message.author.id) deleteMessage(message, `You cannot send messages directly after one another!`);
     });
 };
 
