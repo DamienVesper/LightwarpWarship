@@ -9,7 +9,7 @@ const config = {
     cooldowns,
     embeds,
 
-    prefix: `any prefix`,
+    prefix: `l.`,
 
     version,
     footer: `© LightWarp Network | v${version}`
