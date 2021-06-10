@@ -7,7 +7,7 @@ const refreshActivity = async (client: Client, callback?: any) => {
     await client.user.setPresence({
         activity: {
             type: `WATCHING`,
-            name: `${client.users.cache.size} servers`
+            name: `${client.users.cache.size} members`
         },
 
         status: `online`
