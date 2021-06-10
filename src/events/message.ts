@@ -7,7 +7,7 @@ import log from '../utils/log';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
-    if (message.channel.id === `490575752467709961` && message.content !== `o`) {
+    if ((message.channel as Discord.TextChannel).name === `o-chat` && message.content !== `o`) {
         message.author.send(`Please only send messages that conform with the channel theme!`).catch(() => log(`blue`, `Failed to send warning message to ${message.author.tag}`));
         message.delete();
     }
