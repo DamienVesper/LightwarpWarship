@@ -9,7 +9,7 @@ import oChat from '../utils/oChat';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
-    if ((message.channel as Discord.TextChannel).name === `o-chat`) oChat(client, message);
+    if ((message.channel as Discord.TextChannel).name === `o-chat`) return oChat(client, message);
 
     // Botception and prefix handling.
     if (message.author.bot || message.channel.type === `dm`) return;
