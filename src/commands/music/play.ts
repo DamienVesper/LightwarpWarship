@@ -33,15 +33,20 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     const queueAddEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setColor(config.colors.blue)
-        .setAuthor(`\`${song.title}\` has been added to the queue!`)
-        .setDescription(song.url)
+        .setAuthor(`Added to Queue!`)
+        .setDescription(`\`${song.title}\``)
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
     message.channel.send(queueAddEmbed);
 
+    let botConnection: Discord.VoiceConnection;
+    message.member.voice.channel.join().then(connection => {
+        botConnection = connection;
+    });
+
     const play = async (song: musicUtil.Song) => {
-        musicUtil.botConnection.play(ytdl(song.url))
+        botConnection.play(ytdl(song.url))
             .on(`end`, () => {
                 musicUtil.botQueue.shift();
                 play(musicUtil.botQueue[0]);
