@@ -43,8 +43,8 @@ const startBot = async () => {
 */
 
 logExtra.logSplash();
- loader.loadCommands(client);
- loader.loadEvents(client);
+loader.loadCommands(client);
+loader.loadEvents(client);
 logExtra.logHeader(async () => {
 	await mongoose.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
@@ -57,4 +57,3 @@ logExtra.logHeader(async () => {
 logExtra.logHeader(() => {
 	client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
 });
-
