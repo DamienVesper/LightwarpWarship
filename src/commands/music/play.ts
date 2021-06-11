@@ -43,6 +43,13 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     let botConnection: Discord.VoiceConnection;
     message.member.voice.channel.join().then(connection => {
         botConnection = connection;
+
+        try {
+            play(musicUtil.botQueue[0]);
+        } catch (err) {
+            musicUtil.botQueue.splice(0, musicUtil.botQueue.length);
+            voiceChannel.leave();
+        }
     });
 
     const play = async (song: musicUtil.Song) => {
@@ -61,13 +68,6 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
         message.channel.send(playingEmbed);
     };
-
-    try {
-        play(musicUtil.botQueue[0]);
-    } catch (err) {
-        musicUtil.botQueue.splice(0, musicUtil.botQueue.length);
-        voiceChannel.leave();
-    }
 };
 
 export {
