@@ -46,14 +46,14 @@ logExtra.logSplash();
 loader.loadCommands(client);
 loader.loadEvents(client);
 logExtra.logHeader(async () => {
-	await mongoose.connect(process.env.MONGODB_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	});
+    await mongoose.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
 
     log(`green`, `Connected to database.`);
 });
 
 logExtra.logHeader(() => {
-	client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
+    client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
 });
