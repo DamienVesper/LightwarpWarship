@@ -1,5 +1,5 @@
 import { VoiceConnection } from 'discord.js';
-import * as yts from 'yt-search';
+import yts from 'yt-search';
 
 class Song {
     id: any;
