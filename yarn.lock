@@ -141,6 +141,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
+"@types/yt-search@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/yt-search/-/yt-search-2.3.0.tgz#9f8764ee391d0e0ef000149463d853e3e5ec1220"
+  integrity sha512-B0F8mn14F4nHWG5HJ0WUMhsiDqOPD/bHbPd0pEaj/+qZgmLV/Wmy7yo0xSKPRD9D3R/DUywqIhFFAPUMaYqi3Q==
+
 "@typescript-eslint/eslint-plugin@^4.26.1":
   version "4.26.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.26.1.tgz#b9c7313321cb837e2bf8bebe7acc2220659e67d3"
