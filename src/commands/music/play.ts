@@ -17,7 +17,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     const voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel) return message.channel.send(`${m} You need to be in a voice channel to play a song!`);
-    if ((await message.guild.members.fetch(client.user.id)).voice.channel.id !== voiceChannel.id) return message.channel.send(`${m} You must be in the same channel as the bot to play a song!`);
+    if (client.music.connection && (await message.guild.members.fetch(client.user.id)).voice.channel.id !== voiceChannel.id) return message.channel.send(`${m} You must be in the same channel as the bot to play a song!`);
 
     const perms = voiceChannel.permissionsFor(message.client.user);
     if (!perms.has(`CONNECT`) || !perms.has(`SPEAK`)) return message.channel.send(`${m} I can't connect to that voice channel!`);
