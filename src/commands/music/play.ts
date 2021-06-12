@@ -14,9 +14,10 @@ const cmd: CommandConfig = {
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;
-
     const voiceChannel = message.member.voice.channel;
+
     if (!voiceChannel) return message.channel.send(`${m} You need to be in a voice channel to play a song!`);
+    if ((await message.guild.members.fetch(client.user.id)).voice.channel.id !== voiceChannel.id) return message.channel.send(`${m} You must be in the same channel as the bot to play a song!`);
 
     const perms = voiceChannel.permissionsFor(message.client.user);
     if (!perms.has(`CONNECT`) || !perms.has(`SPEAK`)) return message.channel.send(`${m} I can't connect to that voice channel!`);
@@ -40,20 +41,23 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     message.channel.send(queueAddEmbed);
 
-    let botConnection: Discord.VoiceConnection;
     message.member.voice.channel.join().then(connection => {
-        botConnection = connection;
+        client.music.connection = connection;
 
         try {
             if (client.music.queue.length === 1) play(client.music.queue[0]);
         } catch (err) {
+            // Destroy the queue and connection.
             client.music.queue.splice(0, client.music.queue.length);
+            client.music.connection = null;
+
+            // Leave the channel.
             voiceChannel.leave();
         }
     });
 
     const play = async (song: musicUtil.Song) => {
-        botConnection.play(ytdl(song.url))
+        client.music.connection.play(ytdl(song.url))
             .on(`end`, () => {
                 client.music.queue.shift();
                 play(client.music.queue[0]);
