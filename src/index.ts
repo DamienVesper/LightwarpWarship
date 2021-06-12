@@ -33,6 +33,10 @@ const startBot = async () => {
 
                 logExtra.logHeader(async () => {
                     await client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
+                    client.music = {
+                        connection: null,
+                        queue: []
+                    };
                 });
             });
         });
@@ -41,7 +45,5 @@ const startBot = async () => {
 
 // Actually start the bot.
 startBot();
-
-client.music.queue = [];
 
 export default client;
