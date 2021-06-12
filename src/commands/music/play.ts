@@ -45,7 +45,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         botConnection = connection;
 
         try {
-            play(client.music.queue[0]);
+            if (client.music.queue.length === 1) play(client.music.queue[0]);
         } catch (err) {
             client.music.queue.splice(0, client.music.queue.length);
             voiceChannel.leave();
