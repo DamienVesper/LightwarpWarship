@@ -41,3 +41,7 @@ const startBot = async () => {
 
 // Actually start the bot.
 startBot();
+
+client.music.queue = [];
+
+export default client;

@@ -45,9 +45,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         botConnection = connection;
 
         try {
-            play(musicUtil.botQueue[0]);
+            play(client.music.queue[0]);
         } catch (err) {
-            musicUtil.botQueue.splice(0, musicUtil.botQueue.length);
+            client.music.queue.splice(0, client.music.queue.length);
             voiceChannel.leave();
         }
     });
@@ -55,8 +55,8 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     const play = async (song: musicUtil.Song) => {
         botConnection.play(ytdl(song.url))
             .on(`end`, () => {
-                musicUtil.botQueue.shift();
-                play(musicUtil.botQueue[0]);
+                client.music.queue.shift();
+                play(client.music.queue[0]);
             });
 
         const playingEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()

@@ -1,4 +1,5 @@
 import * as Discord from 'discord.js';
+import { Song } from '../modules/music';
 
 interface CommandConfig {
     desc: string;
@@ -21,6 +22,11 @@ interface Event {
 interface Client extends Discord.Client {
     commands?: Command[];
     events?: Event[];
+
+    music?: {
+        connection: Discord.VoiceConnection;
+        queue: Song[];
+    }
 }
 
 export {

@@ -1,5 +1,6 @@
-import { VoiceConnection } from 'discord.js';
 import yts from 'yt-search';
+
+import client from '../index';
 
 class Song {
     id: any;
@@ -11,23 +12,17 @@ class Song {
         this.title = title;
         this.url = url;
 
-        botQueue.push(this);
+        client.music.queue.push(this);
     }
 
     destroy = () => {
-        botQueue.splice(botQueue.indexOf(this), 1);
+        client.music.queue.splice(client.music.queue.indexOf(this), 1);
     }
 }
-
-const botQueue: Song[] = [];
-let botConnection: VoiceConnection;
 
 const searchYoutube = async (args: any) => yts(args);
 
 export {
     Song,
-    botQueue,
-
-    botConnection,
     searchYoutube
 };

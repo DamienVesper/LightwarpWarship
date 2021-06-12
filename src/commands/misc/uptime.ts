@@ -12,8 +12,8 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     const uptime = {
         days: `**${Math.floor(client.uptime / 864e5)}** Days`,
         hours: `**${Math.floor((client.uptime / 36e5) % 24)}** Hours`,
-        minutes: `**${Math.floor((client.uptime / 1e3) % 60)}** Minutes`,
-        seconds: `**${Math.floor(client.uptime % 1e3)}** Seconds`
+        minutes: `**${Math.floor((client.uptime / 6e4) % 60)}** Minutes`,
+        seconds: `**${Math.floor(client.uptime / 1e3) % 60}** Seconds`
     };
 
     const uptimeEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
