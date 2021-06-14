@@ -14,8 +14,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     if (client.music.connection && (await message.guild.members.fetch(client.user.id)).voice.channel.id !== voiceChannel.id) return message.channel.send(`${m} You must be in the same channel as the bot to run this command!`);
     if (client.music.queue.length === 0) return message.channel.send(`${m} There aren't any songs to skip!`);
 
-    message.channel.send(`${m} Skipped song.`);
+    client.music.connection.dispatcher.end();
     client.music.queue.shift();
+    message.channel.send(`${m} Skipped song.`);
 };
 
 export {
